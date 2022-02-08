@@ -1,0 +1,54 @@
+@import "./fragments/fonts";
+@import "../css/normalize";
+@import "./pages/mainPage";
+@import "./pages/helpPage";
+@import "./pages/settingsPage";
+
+* {
+  font-size: 13px;
+  font-family: 'IBM Plex Mono', monospace; 
+  box-sizing: border-box;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul > li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Russo One', sans-serif;
+  user-select: none;
+}
+
+p {
+  line-height: 1.7;
+  font-family: 'Amatic SC', cursive;
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.page-title {
+  margin: 0 20px;
+  font-size: 3rem;
+}
+
+button, 
+button:active, 
+button:hover {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "wordle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "dev": "gulp serve",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NazarK0/wordle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NazarK0/wordle/issues"
+  },
+  "homepage": "https://github.com/NazarK0/wordle#readme",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "browser-sync": "^2.27.7",
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-sass": "^5.0.0",
+    "gulp-terser-js": "^5.2.2",
+    "sass": "^1.43.4"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
+}

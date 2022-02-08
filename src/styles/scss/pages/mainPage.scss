@@ -1,0 +1,32 @@
+.main-body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 2fr 2fr;
+  grid-template-areas: 
+    "header header header"
+    ". playground ."
+    "keyboard keyboard keyboard";
+
+  .header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ctrl-btn {
+      margin-right: 10px;
+
+      * {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .playground {
+    grid-area: playground;
+  }
+
+  .keyboard {
+    grid-area: keyboard;
+  }
+}
