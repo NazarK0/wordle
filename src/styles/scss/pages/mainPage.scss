@@ -1,3 +1,5 @@
+@import '../fragments/keyboard';
+
 .main-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -24,6 +26,20 @@
 
   .playground {
     grid-area: playground;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .matrix-row {
+      display: flex;
+      margin-bottom: 4px;
+      .letter {
+        width: 65px;
+        height: 65px;
+        border: 1px solid rgb(66, 64, 64);
+      }
+    }
   }
 
   .keyboard {

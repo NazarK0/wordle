@@ -4,12 +4,12 @@ const validKeys = {
 };
 
 class LocalStorageService {
-  static #isKeyValid(key) {
+  static isKeyValid(key) {
     return Object.keys(validKeys).includes(key);
   }
 
   static set(key, data) {
-    if (!LocalStorageService.#isKeyValid(key)) return;
+    if (!LocalStorageService.isKeyValid(key)) return;
 
     try {
       localStorage.setItem(key, JSON.stringify(data));
@@ -19,7 +19,7 @@ class LocalStorageService {
   }
 
   static get(key)  {
-    if (key && LocalStorageService.#isKeyValid(key)) {
+    if (key && LocalStorageService.isKeyValid(key)) {
       try {
         return JSON.parse(localStorage.getItem(key) || '');
       } catch (error) {

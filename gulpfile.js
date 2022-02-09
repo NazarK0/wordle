@@ -1,10 +1,11 @@
-const gulp = require('gulp')
-const del = require('del')
-const terser = require('gulp-terser-js')
-const cleanCSS = require('gulp-clean-css')
-const rename = require("gulp-rename");
+/* eslint-disable no-undef */
+const gulp = require('gulp');
+const del = require('del');
+const terser = require('gulp-terser-js');
+const cleanCSS = require('gulp-clean-css');
+// const rename = require("gulp-rename");
 const concatCss = require('gulp-concat-css');
-const autoprefixer = require('gulp-autoprefixer')
+const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 const babel = require('gulp-babel');
@@ -18,7 +19,7 @@ const src = {
   scss: 'src/styles/scss/**/*.scss',
   css: 'src/styles/css/**/*.css',
   html: 'src/**/*.html',
-}
+};
 const dest = {
   js: 'dest/js',
   fonts: 'dest/fonts',
@@ -27,27 +28,27 @@ const dest = {
   scss: 'src/styles/css/compiled',
   css: 'dest',
   html: 'dest',
-}
+};
 
 function watch() {
   browserSync.init({
     server: ['./src', './dest'],
-  })
+  });
 
-  gulp.watch(src.scss, scss)
-  gulp.watch(src.css, css)
-  gulp.watch(src.fonts, fonts)
-  gulp.watch(src.img, img)
-  gulp.watch(src.js, js)
+  gulp.watch(src.scss, scss);
+  gulp.watch(src.css, css);
+  gulp.watch(src.fonts, fonts);
+  gulp.watch(src.img, img);
+  gulp.watch(src.js, js);
   // gulp.watch(src.libs, libs)
-  gulp.watch(src.html, html)
+  gulp.watch(src.html, html);
 }
 
 function html() {
   return gulp
     .src(src.html)
     .pipe(gulp.dest(dest.html))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 function scss() {
@@ -55,7 +56,7 @@ function scss() {
     .src(src.scss)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(dest.scss))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 function css() {
@@ -65,21 +66,21 @@ function css() {
     .pipe(concatCss("bundle.min.css"))
     .pipe(cleanCSS({ level: 2 }))
     .pipe(gulp.dest(dest.css))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 function fonts() {
   return gulp
     .src(src.fonts)
     .pipe(gulp.dest(dest.fonts))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 function img() {
   return gulp
     .src(src.img)
     .pipe(gulp.dest(dest.img))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 function js() {
@@ -94,11 +95,11 @@ function js() {
         safari10: true,
       }),
     )
-    .pipe(rename({
-      suffix: ".min"
-    }))
+    // .pipe(rename({
+    //   suffix: ".min"
+    // }))
     .pipe(gulp.dest(dest.js))
-    .pipe(reload({ stream: true }))
+    .pipe(reload({ stream: true }));
 }
 
 // function libs() {
@@ -109,12 +110,12 @@ function js() {
 // }
 
 function clean() {
-  return del([`dest`])
+  return del([`dest`]);
 }
 
 const build = gulp.series(
     gulp.parallel(clean, scss), 
-    gulp.parallel(css, js, /*libs,*/img, fonts, html ))
+    gulp.parallel(css, js, /*libs,*/img, fonts, html ));
 
 gulp.task('serve', gulp.series(build, watch));
 gulp.task('build', build);
