@@ -2,6 +2,7 @@ const gulp = require('gulp')
 const del = require('del')
 const terser = require('gulp-terser-js')
 const cleanCSS = require('gulp-clean-css')
+const rename = require("gulp-rename");
 const concatCss = require('gulp-concat-css');
 const autoprefixer = require('gulp-autoprefixer')
 const browserSync = require('browser-sync').create();
@@ -10,7 +11,7 @@ const babel = require('gulp-babel');
 const sass = require('gulp-sass')(require('sass'));
 
 const src = {
-  js: 'src/js/**/*.jm?s',
+  js: 'src/js/**/*.js',
   fonts: 'src/fonts/**/*',
   img: 'src/img/**/*',
   // libs: 'src/libs/**/*',
@@ -24,7 +25,7 @@ const dest = {
   img: 'dest/img',
   // libs: 'dest/libs',
   scss: 'src/styles/css/compiled',
-  css: 'dest/css',
+  css: 'dest',
   html: 'dest',
 }
 
@@ -61,7 +62,7 @@ function css() {
   return gulp
     .src(src.css)
     .pipe(autoprefixer(['last 15 versions', '>.1%']))
-    .pipe(concatCss("/bundle.min.css"))
+    .pipe(concatCss("bundle.min.css"))
     .pipe(cleanCSS({ level: 2 }))
     .pipe(gulp.dest(dest.css))
     .pipe(reload({ stream: true }))
@@ -93,6 +94,9 @@ function js() {
         safari10: true,
       }),
     )
+    .pipe(rename({
+      suffix: ".min"
+    }))
     .pipe(gulp.dest(dest.js))
     .pipe(reload({ stream: true }))
 }
