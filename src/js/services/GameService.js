@@ -12,8 +12,14 @@ class GameService {
   _results = [];
   _quizWord = null;
   _userWords = [];
+  _matrixContainerSelector = null;
+  _keyboardContainerSelector = null;
+  _currentWordIndex = 0;
 
-  constructor(wordSize = DEFAULT_WORD_SIZE) {
+  constructor(matrixContainerSelector,keyboardContainerSelector, wordSize = DEFAULT_WORD_SIZE) {
+    this._keyboardContainerSelector = keyboardContainerSelector;
+    this._matrixContainerSelector = matrixContainerSelector;
+
     if (!LocalStorageService.get(validKeys.wordSize)) {
       LocalStorageService.set(validKeys.wordSize, wordSize);
       this._wordSize = wordSize;
@@ -29,7 +35,6 @@ class GameService {
     }
     
     this.initQuizWord();
-    
   }
 
   get wordSize() { return this._wordSize; }
@@ -37,15 +42,17 @@ class GameService {
   _quizRow(userWord = null) {
     let row = '';
 
-    // console.log(userWord);
     if (userWord == null) {
-      // console.log(userWord, 'inside');
       for (let letter = 0; letter < this._wordSize; letter++) {
         row += '<div class="letter"></div>\n';
       }
     } else {
       for (let letter = 0; letter < this._wordSize; letter++) {
-        row += `<div class="letter">${userWord[letter]}</div>\n`;
+        if (userWord[letter] == null) {
+          row += `<div class="letter"></div>\n`;
+        } else {
+          row += `<div class="letter">${userWord[letter]}</div>\n`;
+        }
       }
     }
     
@@ -73,6 +80,7 @@ class GameService {
 
   createQuizMatrix() {
     const elementRows = [];
+    const playgroundElement = document.querySelector(this._matrixContainerSelector);
 
     for (let row = 0; row < this._wordSize; row++) {
       if (row < this._userWords.length) {
@@ -81,7 +89,40 @@ class GameService {
         elementRows.push(this._quizRow());
       }
     }
-    return elementRows.join('\n');
+    playgroundElement.innerHTML = elementRows.join('\n');
+  }
+
+  _onCtrlKeyClickHandler = (event) =>{
+    switch (event.currentTarget.innerText) {
+      case 'enter':
+        this._onEnterKlickHandler();
+        break;
+      case 'backspace':
+        this._onBackspaceKlickHandler();
+        break;
+      default:
+        break;
+    }
+  };
+  _onLetterKeyClickHandler = (event) => {
+    const letter = event.currentTarget.innerText;
+
+    if (this._userWords[this._currentWordIndex] == null && this._userWords.length <= this.wordSize) {
+      this._userWords.push('');
+    }
+
+    if (this._userWords[this._currentWordIndex].length < this._wordSize && this._userWords.length <= this.wordSize) {
+      this._userWords[this._currentWordIndex] += letter;
+      this.createQuizMatrix();
+    }
+  };
+
+  _onEnterKlickHandler() {
+    
+    this._currentWordIndex++;
+  }
+  _onBackspaceKlickHandler() {
+    console.log('BSP')
   }
 
   _keyboardParser(template) {
@@ -112,6 +153,8 @@ class GameService {
   }
 
   createKeyboard(language = languages.ua) {
+    const keyboardElement = document.querySelector(this._keyboardContainerSelector);
+
     const keysTemplateEn= [
       ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '$backspace'],
       ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '$enter'],
@@ -125,12 +168,19 @@ class GameService {
 
     switch (language) {
       case languages.ua:
-        return this._keyboardParser(keysTemplateUa);
+        keyboardElement.innerHTML =  this._keyboardParser(keysTemplateUa);
+        break;
       case languages.en:
-        return this._keyboardParser(keysTemplateEn);
+        keyboardElement.innerHTML =  this._keyboardParser(keysTemplateEn);
+        break;
       default:
         return;
     }
+
+    Array.from(document.querySelectorAll('.key.letter'))
+      .forEach((key) => key.addEventListener('click', this._onLetterKeyClickHandler ));
+    Array.from(document.querySelectorAll('.key.ctrl'))
+      .forEach((key) => key.addEventListener('click', this._onCtrlKeyClickHandler ));
   }
 }
 
