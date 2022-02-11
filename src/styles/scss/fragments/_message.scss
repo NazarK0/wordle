@@ -1,0 +1,25 @@
+.message-box {
+  display: none;
+  justify-content: center;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 8px;
+  width: 100vw;
+
+  .message-content {
+    background-color: #795151;
+    padding: 10px;
+    border: 1px solid #888;
+    width: fit-content;
+    border-radius: 7px;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, .3);
+
+    .message-text {
+      margin: 0;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fff;
+    }
+  }
+}

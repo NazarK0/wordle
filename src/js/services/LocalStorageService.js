@@ -1,5 +1,6 @@
 const validKeys = {
   wordSize: 'Розмір слова',
+  maxTries: 'Кількість спроб',
   results: 'Результати',
 };
 
