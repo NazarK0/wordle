@@ -63,16 +63,6 @@ class GameService {
       this._quizWord = validWords[index];
   }
 
-  checkQuizWord(userWord) {
-    this._userWords.push(userWord);
-
-    if (this._quizWord === userWord) {
-      console.log('Match!');
-      LocalStorageService.set(validKeys.results, this._results.push({time: new Date().toISOString(), win: true }));
-      // LocalStorageService.get(validKeys.results);
-    }
-  }
-
   createQuizMatrix() {
     const elementRows = [];
     const playgroundElement = document.querySelector(this._matrixContainerSelector);
@@ -191,7 +181,20 @@ class GameService {
       return;
     }
     if (this._currentWordIndex === this._maxTries - 1) {
+      const resultsList = LocalStorageService.get(validKeys.results);
+
       this._message('Продовжуйте завтра, ви не вгадали');
+
+        const result = {
+          time: new Date().toISOString(),
+          tries: this._maxTries,
+          wordSize: this._wordSize,
+          win: false
+        };
+
+        resultsList.push(result);
+
+        LocalStorageService.set(validKeys.results, resultsList);
       this._gameOver = true;
       return;
     }
@@ -199,11 +202,31 @@ class GameService {
     if( word && (word.length !== this._wordSize)) {
       this._message('Не достатньо букв');
     } else if (words.includes(word)) {
+      const isWordDuplicated =  this._userWords
+        .filter(uw => uw === word)
+        .length > 1;
+      
+      if (isWordDuplicated) {
+        this._message('Слово дублюється');
+        return;
+      }
       this._currentWordIndex++;
       this.createQuizMatrix();
 
       if(this._currentWordIndex <= this._maxTries && word === this._quizWord){
         this._message('Перемога!');
+        const resultsList = LocalStorageService.get(validKeys.results);
+
+        const result = {
+          time: new Date().toISOString(),
+          tries: this._currentWordIndex,
+          wordSize: this._wordSize,
+          win: true
+        };
+
+        resultsList.push(result);
+
+        LocalStorageService.set(validKeys.results, resultsList);
         this._gameOver = true;
       } 
     } else {

@@ -6,12 +6,11 @@ const validKeys = {
 
 class LocalStorageService {
   static isKeyValid(key) {
-    return Object.keys(validKeys).includes(key);
+    return Object.values(validKeys).includes(key);
   }
 
   static set(key, data) {
-    if (!LocalStorageService.isKeyValid(key)) return;
-
+    console.log(data, 'data')
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (error) {
