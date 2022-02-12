@@ -10,10 +10,12 @@
 
   .modal-body {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    border-radius: 13px;
+    box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
+    width: 40%;
   }
 
   .close {

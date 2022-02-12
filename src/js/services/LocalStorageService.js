@@ -2,6 +2,7 @@ const validKeys = {
   wordSize: 'Розмір слова',
   maxTries: 'Кількість спроб',
   results: 'Результати',
+  darkTheme: 'Темна тема'
 };
 
 class LocalStorageService {
@@ -10,7 +11,6 @@ class LocalStorageService {
   }
 
   static set(key, data) {
-    console.log(data, 'data')
     try {
       localStorage.setItem(key, JSON.stringify(data));
     } catch (error) {

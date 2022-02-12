@@ -48,6 +48,10 @@ class GameService {
     } else {
       this._results = LocalStorageService.get(validKeys.results);
     }
+
+    if (!LocalStorageService.get(validKeys.darkTheme)) {
+      LocalStorageService.set(validKeys.darkTheme, false);
+    }
     
     this.initQuizWord();
     helpModal.innerHTML = helpRender(this._maxTries, this._wordSize);

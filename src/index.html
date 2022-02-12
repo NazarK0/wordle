@@ -10,17 +10,61 @@
   <script type="module" defer src="./js/game.js"></script>
   <script defer src="./js/modal.js"></script>
   <script defer src="./js/helpWindow.js"></script>
+  <script type="module" defer src="./js/settingsWindow.js"></script>
 </head>
 <body class="main-body">
   <header class="header">
-    <button id="help-open" class="ctrl-btn" title="Довідка"><i class="icofont-question-square"></i></button>
+    <div class="left-block">
+      <button id="help-open" class="ctrl-btn" title="Довідка"><i class="icofont-question-square"></i></button>
+    </div>
     <h1 class="page-title">СЛОВЕЧКА</h1>
-    <button id="ratin-open" class="ctrl-btn" title="Рейтинг"><i class="icofont-ui-rating"></i></button>
-    <button id="settings-open" class="ctrl-btn" title="Налаштування"><i class="icofont-ui-settings"></i></button>
+    <div class="right-block">
+      <button id="ratin-open" class="ctrl-btn" title="Рейтинг"><i class="icofont-ui-rating"></i></button>
+      <button id="settings-open" class="ctrl-btn" title="Налаштування"><i class="icofont-ui-settings"></i></button>
+    </div>
   </header>
   <main id="playground" class="playground"></main>
   <section id ="keyboard" class="keyboard"></section>
-  <!-- The Help -->
+  <!-- The Settings Window -->
+  <div id="settings-window" class="settings-window">
+    <div class="settings-body">
+      <header class="header">
+        <h2 class="title">Налаштування</h2>
+        <span id="settings-close" class="close">&times;</span>
+      </header>
+      <ul class="settings">
+        <li class="settings-item">
+          <h4 class="title">Кількість спроб</h4>
+          <div class="setter">
+            <input type="number" id="max-tries" min="1" max="20">
+          </div>
+        </li>
+        <li class="settings-item">
+          <h4 class="title">Довжина слова</h4>
+          <div class="setter">
+            <input type="number" id="word-size" min="3" max="10">
+          </div>
+        </li>
+        <li class="settings-item">
+          <h4 class="title">Темна Тема</h4>
+          <div class="setter">
+            <label class="switch">
+              <input type="checkbox" id="dark-theme">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>
+        <li class="settings-item">
+          <h4 class="title">Зворотній зв'язок</h4>
+          <div class="setter">
+            <a href="https://telegram.me/nazar_vs">Написати автору</a>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <!-- The Help Window -->
   <div id="help-window" class="help-window">
     <div class="help-body">
       <span id="help-close" class="close">&times;</span>

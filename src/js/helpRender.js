@@ -1,6 +1,6 @@
 const helpRender = (tries, wordSize)=> (
   `
-  <h2>ЯК ГРАТИ</h2>
+  <h2 class="title">ЯК ГРАТИ</h2>
   <p>Відгадайте <strong>СЛОВЕЧКО</strong> за ${tries} спроб.</p>
   <p>
     Кожне припущення має бути дійсним словом із ${wordSize} букв. 
