@@ -5,7 +5,6 @@ const MESSAGE_DURATION = 3000;
 const DEFAULT_WORD_SIZE = 3;
 const DEFAULT_MAX_TRIES = 5;
 
-
 const languages = {
   ua: 'Українська',
   en: 'Англійська',
@@ -181,21 +180,8 @@ class GameService {
       return;
     }
     if (this._currentWordIndex === this._maxTries - 1) {
-      const resultsList = LocalStorageService.get(validKeys.results);
-
       this._message('Продовжуйте завтра, ви не вгадали');
-
-        const result = {
-          time: new Date().toISOString(),
-          tries: this._maxTries,
-          wordSize: this._wordSize,
-          win: false
-        };
-
-        resultsList.push(result);
-
-        LocalStorageService.set(validKeys.results, resultsList);
-      this._gameOver = true;
+      this._saveResult(false);
       return;
     }
 
@@ -215,20 +201,10 @@ class GameService {
 
       if(this._currentWordIndex <= this._maxTries && word === this._quizWord){
         this._message('Перемога!');
-        const resultsList = LocalStorageService.get(validKeys.results);
-
-        const result = {
-          time: new Date().toISOString(),
-          tries: this._currentWordIndex,
-          wordSize: this._wordSize,
-          win: true
-        };
-
-        resultsList.push(result);
-
-        LocalStorageService.set(validKeys.results, resultsList);
-        this._gameOver = true;
+        this._saveResult(true);
       } 
+    } else if (!word) {
+      this._message('Введіть слово');
     } else {
       this._message('Слова немає в словнику');
     }
@@ -279,6 +255,25 @@ class GameService {
     setTimeout(() => {
       messageBox.style.display = 'none';
     }, MESSAGE_DURATION);
+  }
+
+  _saveResult(isWinner) {
+    const dateNow = new Date();
+    const previousWeek = new Date(dateNow.getTime() - 7 * 24 * 60 * 60 * 1000);
+    let resultsList = LocalStorageService.get(validKeys.results);
+
+    const result = {
+      time: new Date().getTime(),
+      tries: this._currentWordIndex,
+      wordSize: this._wordSize,
+      win: isWinner
+    };
+
+    resultsList.push(result);
+    resultsList = resultsList.filter(res => res.time >= previousWeek && res.time <= dateNow);
+
+    LocalStorageService.set(validKeys.results, resultsList);
+    this._gameOver = true;
   }
 }
 
