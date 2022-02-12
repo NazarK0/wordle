@@ -345,11 +345,11 @@ template {
 .keyboard {
   width: 700px;
   height: 180px;
-  background-color: #111;
+  background-color: var(--keyboard-bg);
   margin: 0px auto;
   border-radius: 9px;
   padding: 30px;
-  color: #eee;
+  color: var(--keyboard-font-color);
 }
 .keyboard .keys-row {
   display: flex;
@@ -358,7 +358,7 @@ template {
   width: 40px;
   height: 40px;
   display: block;
-  background-color: #333;
+  background-color: var(--keyboard-key-bg);
   text-align: left;
   padding-left: 8px;
   line-height: 29px;
@@ -369,7 +369,7 @@ template {
   transition: box-shadow 0.7s ease;
 }
 .keyboard .keys-row .key:hover {
-  box-shadow: 0px 0px 10px #14b524;
+  box-shadow: var(--keyboard-key-shadow);
   z-index: 1000;
 }
 .keyboard .keys-row .key.backspace {
@@ -394,21 +394,20 @@ template {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-window .modal-body {
-  background-color: #fefefe;
+  background-color: var(--body-bg-color);
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
   border-radius: 13px;
   box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
   width: 40%;
 }
 .modal-window .close {
-  color: #aaa;
+  color: var(--body-font-color);
   font-size: 28px;
   font-weight: bold;
 }
 .modal-window .close:hover, .modal-window .close:focus {
-  color: black;
+  color: var(--body-font-active-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -423,9 +422,9 @@ template {
   width: 100vw;
 }
 .message-box .message-content {
-  background-color: #795151;
+  background-color: var(--message-bg);
   padding: 10px;
-  border: 1px solid #888;
+  border: var(--border);
   width: fit-content;
   border-radius: 7px;
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.3);
@@ -434,7 +433,7 @@ template {
   margin: 0;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #fff;
+  color: var(--message-text-color);
 }
 
 .help-window {
@@ -446,23 +445,25 @@ template {
   width: 100vw;
   min-height: 100vh;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
 }
 .help-window .help-body {
-  background-color: #fefefe;
+  background-color: var(--body-bg);
   padding: 30px;
-  border: 1px solid #888;
   min-height: 100vh;
+  color: var(--body-font-color);
 }
 .help-window .close {
-  color: #aaa;
+  color: var(--body-font-color);
   font-size: 28px;
   font-weight: bold;
 }
 .help-window .close:hover, .help-window .close:focus {
-  color: black;
+  color: var(--body-font-active-color);
   text-decoration: none;
   cursor: pointer;
+}
+.help-window hr {
+  border: var(--border);
 }
 
 /* The switch - the box around the slider */
@@ -527,6 +528,7 @@ input:checked + .slider:before {
 }
 
 .settings-window {
+  display: none;
   position: fixed;
   z-index: 10000;
   left: 0;
@@ -534,23 +536,22 @@ input:checked + .slider:before {
   width: 100vw;
   min-height: 100vh;
   overflow: auto;
-  background-color: #cfcdcd;
+  background: var(--body-bg);
 }
 .settings-window .settings-body {
-  background-color: #fefefe;
+  background-color: var(--body-bg-color);
   padding: 30px;
-  border: 1px solid #888;
   min-height: 100vh;
   width: 600px;
   margin: 0 auto;
 }
 .settings-window .settings-body .close {
-  color: #aaa;
+  color: var(--body-font-color);
   font-size: 28px;
   font-weight: bold;
 }
 .settings-window .settings-body .close:hover, .settings-window .settings-body .close:focus {
-  color: black;
+  color: var(--body-font-active-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -560,18 +561,69 @@ input:checked + .slider:before {
   justify-content: space-between;
 }
 
+:root,
+.main-body.light-theme {
+  --body-bg: rgb(231, 231, 231);
+  --body-bg-color: rgb(245, 245, 245);
+  --body-font-color: rgb(44, 11, 11);
+  --body-font-active-color: rgb(99, 64, 64);
+  --border: 1px solid rgb(44, 11, 11);
+  --cell-border: 4px solid rgb(83, 47, 47);
+  --cell-border-filled: 4px solid rgb(231, 231, 231);
+  --cell-bg: rgb(44, 11, 11);
+  --cell-bg-right-place: rgb(52, 196, 64);
+  --cell-font-color-right-place: rgb(44, 11, 11);
+  --cell-bg-wrong-place: rgb(235, 224, 72);
+  --cell-font-color-wrong-place: rgb(44, 11, 11);
+  --cell-bg-not-in-word: rgb(44, 22, 22);
+  --cell-font-color-not-in-word: rgb(231, 231, 231);
+  --cell-font-color: rgb(231, 231, 231);
+  --message-bg: rgb(211, 238, 162);
+  --message-text-color: rgb(44, 11, 11);
+  --keyboard-bg: rgb(44, 11, 11);
+  --keyboard--key-bg: rgb(99, 64, 64);
+  --keyboard-font-color: rgb(231, 231, 231);
+  --keyboard-key-shadow: 0px 0px 3px rgb(231, 231, 231);
+}
+
+.main-body.dark-theme {
+  --body-bg: rgb(41, 18, 9);
+  --body-bg-color: rgb(31, 32, 25);
+  --body-font-color: rgb(245, 245, 236);
+  --body-font-active-color: rgb(189, 184, 236);
+  --border: 1px solid rgb(236, 215, 215);
+  --cell-border: 4px solid rgb(83, 47, 47);
+  --cell-border-filled: 4px solid rgb(171, 175, 118);
+  --cell-bg: rgb(231, 228, 228);
+  --cell-bg-right-place: rgb(52, 196, 64);
+  --cell-font-color-right-place: rgb(14, 17, 14);
+  --cell-bg-wrong-place: rgb(235, 224, 72);
+  --cell-font-color-wrong-place: rgb(17, 17, 12);
+  --cell-bg-not-in-word: rgb(209, 209, 209);
+  --cell-font-color-not-in-word: rgb(0, 0, 0);
+  --cell-font-color: rgb(15, 15, 15);
+  --message-bg: #ddb5b5;
+  --message-text-color: rgb(36, 8, 8);
+  --keyboard-bg: rgb(245, 186, 186);
+  --keyboard--key-bg: rgb(226, 137, 137);
+  --keyboard-font-color: rgb(14, 4, 4);
+  --keyboard-key-shadow: 0px 0px 10px #14b524;
+}
+
 .main-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 0.3fr 3fr 1fr;
   grid-template-areas: "header header header" ". playground ." "keyboard keyboard keyboard";
+  background: var(--body-bg);
+  color: var(--body-font-color);
 }
 .main-body .header {
   grid-area: header;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #252323;
+  border-bottom: var(--border);
   padding: 0 35px;
 }
 .main-body .header .ctrl-btn {
@@ -579,6 +631,7 @@ input:checked + .slider:before {
 }
 .main-body .header .ctrl-btn * {
   font-size: 1.9rem;
+  color: var(--body-font-color);
 }
 .main-body .playground {
   grid-area: playground;
@@ -597,25 +650,28 @@ input:checked + .slider:before {
   justify-content: center;
   width: 65px;
   height: 65px;
-  border: 4px solid #424040;
-  background: #000;
-  color: #fff;
+  border: var(--cell-border);
+  background: var(--cell-bg);
+  color: var(--cell-font-color);
   font-weight: bold;
   text-transform: uppercase;
   font-size: 1.9rem;
   margin-right: 4px;
 }
 .main-body .matrix-row .letter.filled {
-  border: 4px solid #ce4646;
+  border: var(--cell-border-filled);
 }
 .main-body .matrix-row .letter.right-place {
-  background-color: #34c440;
+  background-color: var(--cell-bg-right-place);
+  color: var(--cell-font-color-right-place);
 }
 .main-body .matrix-row .letter.wrong-place {
-  background-color: #ebe048;
+  background-color: var(--cell-bg-wrong-place);
+  color: var(--cell-font-color-wrong-place);
 }
 .main-body .matrix-row .letter.not-in-word {
-  background-color: black;
+  background-color: var(--cell-bg-not-in-word);
+  color: var(--cell-font-color-not-in-word);
 }
 .main-body .keyboard {
   grid-area: keyboard;

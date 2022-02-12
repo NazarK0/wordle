@@ -1,0 +1,23 @@
+.main-body.dark-theme {
+  --body-bg: rgb(41, 18, 9);
+  --body-bg-color: rgb(31, 32, 25);
+  --body-font-color: rgb(245, 245, 236);
+  --body-font-active-color: rgb(189, 184, 236);
+  --border: 1px solid rgb(236, 215, 215);
+  --cell-border: 4px solid rgb(83, 47, 47);
+  --cell-border-filled: 4px solid rgb(171, 175, 118);
+  --cell-bg: rgb(231, 228, 228);
+  --cell-bg-right-place: rgb(52, 196, 64);
+  --cell-font-color-right-place: rgb(14, 17, 14);
+  --cell-bg-wrong-place: rgb(235, 224, 72);
+  --cell-font-color-wrong-place: rgb(17, 17, 12);
+  --cell-bg-not-in-word: rgb(209, 209, 209);
+  --cell-font-color-not-in-word: rgb(0, 0, 0);
+  --cell-font-color: rgb(15, 15, 15);
+  --message-bg: #ddb5b5;
+  --message-text-color: rgb(36, 8, 8);
+  --keyboard-bg: rgb(245, 186, 186);
+  --keyboard--key-bg: rgb(226, 137, 137);
+  --keyboard-font-color: rgb(14, 4, 4);
+  --keyboard-key-shadow: 0px 0px 10px #14b524;
+}

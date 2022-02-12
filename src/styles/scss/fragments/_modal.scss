@@ -9,23 +9,22 @@
   background-color: rgba(0, 0, 0, 0.4);
 
   .modal-body {
-    background-color: #fefefe;
+    background-color:  var(--body-bg-color);
     margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
     border-radius: 13px;
     box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
     width: 40%;
   }
 
   .close {
-    color: #aaa;
+    color: var(--body-font-color);
     font-size: 28px;
     font-weight: bold;
 
     &:hover,
     &:focus {
-      color: black;
+      color: var(--body-font-active-color);
       text-decoration: none;
       cursor: pointer;
     }

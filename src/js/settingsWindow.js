@@ -8,13 +8,25 @@ const maxTries = document.getElementById("max-tries");
 const wordSize = document.getElementById("word-size");
 
 const darkThemeToggler = document.getElementById("dark-theme");
-let isDarkTheme = darkThemeToggler.checked;
+
+const setDarkTheme = (status) => {
+  if (status) {
+    document.body.classList.remove('light-theme');
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+    document.body.classList.add('light-theme');
+  }
+};
 
 const fetchData = () => {
+  const isDarkTheme = LocalStorageService.get(validKeys.darkTheme);
+
   maxTries.value = LocalStorageService.get(validKeys.maxTries);
   wordSize.value = LocalStorageService.get(validKeys.wordSize);
-  darkThemeToggler.value = LocalStorageService.get(validKeys.darkTheme);
-  isDarkTheme = darkThemeToggler.checked;
+
+  darkThemeToggler.value = isDarkTheme;
+  setDarkTheme(isDarkTheme);
 };
 
 if (openSettingsBtn) {
@@ -51,3 +63,10 @@ wordSize.oninput = (event) => {
   else if (value  > 20) LocalStorageService.set(validKeys.wordSize, 20);
   else LocalStorageService.set(validKeys.wordSize, Number(value));
 };
+
+darkThemeToggler.onchange = (event) => {
+  const isDarkTheme = event.currentTarget.checked;
+
+  setDarkTheme(isDarkTheme);
+};
+

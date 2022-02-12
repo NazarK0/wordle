@@ -8,9 +8,9 @@
   width: 100vw;
 
   .message-content {
-    background-color: #795151;
+    background-color: var(--message-bg);
     padding: 10px;
-    border: 1px solid #888;
+    border: var(--border);
     width: fit-content;
     border-radius: 7px;
     box-shadow: 0 0 8px 2px rgba(0, 0, 0, .3);
@@ -19,7 +19,7 @@
       margin: 0;
       font-weight: bold;
       font-size: 1.2rem;
-      color: #fff;
+      color: var(--message-text-color);
     }
   }
 }

@@ -1,5 +1,5 @@
 .settings-window {
-  // display: none;
+  display: none;
   position: fixed;
   z-index: 10000;
   left: 0;
@@ -7,24 +7,23 @@
   width: 100vw;
   min-height: 100vh;
   overflow: auto;
-  background-color: #cfcdcd;
+  background: var(--body-bg);
 
   .settings-body {
-    background-color: #fefefe;
+    background-color: var(--body-bg-color);
     padding: 30px;
-    border: 1px solid #888;
     min-height: 100vh;
     width: 600px;
     margin: 0 auto;
 
     .close {
-      color: #aaa;
+      color: var(--body-font-color);
       font-size: 28px;
       font-weight: bold;
 
       &:hover,
       &:focus {
-        color: black;
+        color: var(--body-font-active-color);
         text-decoration: none;
         cursor: pointer;
       }
