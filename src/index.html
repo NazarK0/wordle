@@ -8,21 +8,30 @@
   <link rel="stylesheet" type="text/css" href="./fonts/icofont/icofont.min.css">
   <link rel="stylesheet" href="./bundle.min.css">
   <script type="module" defer src="./js/game.js"></script>
+  <script defer src="./js/modal.js"></script>
+  <script defer src="./js/helpWindow.js"></script>
 </head>
 <body class="main-body">
   <header class="header">
-    <a class="ctrl-btn" href="./pages/help.html" title="Довідка"><i class="icofont-question-square"></i></a>
+    <button id="help-open" class="ctrl-btn" title="Довідка"><i class="icofont-question-square"></i></button>
     <h1 class="page-title">СЛОВЕЧКА</h1>
     <button class="ctrl-btn" title="Рейтинг"><i class="icofont-ui-rating"></i></button>
     <a class="ctrl-btn" href="./pages/settings.html" title="Налаштування"><i class="icofont-ui-settings"></i></a>
   </header>
   <main id="playground" class="playground"></main>
   <section id ="keyboard" class="keyboard"></section>
+  <!-- The Help -->
+  <div id="help-window" class="help-window">
+    <div class="help-body">
+      <span id="help-close" class="close">&times;</span>
+      <div id="help-content" class="help-content"></div>
+    </div>
+  </div>
   <!-- The Modal -->
   <div id="modal-window" class="modal-window">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>Some text in the Modal..</p>
+    <div class="modal-body">
+      <span id="modal-close" class="close">&times;</span>
+      <div id="modal-content" class="modal-content"></div>
     </div>
   </div>
   <!-- The MessageBox -->

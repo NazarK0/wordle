@@ -1,5 +1,6 @@
 import LocalStorageService, {validKeys} from './LocalStorageService.js';
 import words from '../words.js';
+import helpRender from '../helpRender.js';
 
 const MESSAGE_DURATION = 3000;
 const DEFAULT_WORD_SIZE = 3;
@@ -24,6 +25,8 @@ class GameService {
   constructor(matrixContainerSelector,keyboardContainerSelector, wordSize = DEFAULT_WORD_SIZE, maxTries = DEFAULT_MAX_TRIES) {
     this._keyboardContainerSelector = keyboardContainerSelector;
     this._matrixContainerSelector = matrixContainerSelector;
+    const helpModal = document.getElementById('modal-content');
+    const helpWindow = document.getElementById('help-content');
 
     if (!LocalStorageService.get(validKeys.maxTries)) {
       LocalStorageService.set(validKeys.maxTries, maxTries);
@@ -47,6 +50,8 @@ class GameService {
     }
     
     this.initQuizWord();
+    helpModal.innerHTML = helpRender(this._maxTries, this._wordSize);
+    helpWindow.innerHTML = helpRender(this._maxTries, this._wordSize);
   }
 
   get wordSize() { return this._wordSize; }
@@ -275,6 +280,7 @@ class GameService {
     LocalStorageService.set(validKeys.results, resultsList);
     this._gameOver = true;
   }
+
 }
 
 export default GameService;

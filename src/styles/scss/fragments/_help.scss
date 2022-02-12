@@ -1,4 +1,5 @@
-.modal-window {
+.help-window {
+  display: none;
   position: fixed;
   z-index: 10000;
   left: 0;
@@ -8,12 +9,11 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 
-  .modal-body {
+  .help-body {
     background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #888;
-    width: 80%;
+    min-height: 100vh;
   }
 
   .close {
