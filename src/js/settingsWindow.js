@@ -56,7 +56,7 @@ maxTries.oninput = (event) => {
   const value = event.currentTarget.value;
 
   if (value < 1) LocalStorageService.set(validKeys.maxTries, 1);
-  else if (value  > 20) LocalStorageService.set(validKeys.maxTries, 20);
+  else if (value  > 20) LocalStorageService.set(validKeys.maxTries, 8);
   else LocalStorageService.set(validKeys.maxTries, Number(value));
 };
 
@@ -64,7 +64,7 @@ wordSize.oninput = (event) => {
   const value = event.currentTarget.value;
 
   if (value < 3) LocalStorageService.set(validKeys.wordSize, 3);
-  else if (value  > 20) LocalStorageService.set(validKeys.wordSize, 20);
+  else if (value  > 20) LocalStorageService.set(validKeys.wordSize, 9);
   else LocalStorageService.set(validKeys.wordSize, Number(value));
 };
 
