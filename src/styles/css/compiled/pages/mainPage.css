@@ -56,7 +56,7 @@
 }
 .modal-window .modal-body {
   background-color: var(--body-bg-color);
-  margin: 10% auto;
+  margin: 5% auto;
   padding: 20px;
   border-radius: 13px;
   box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
@@ -222,6 +222,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 20px 0;
 }
 .settings-window .settings-body .settings-item input {
   border: none;

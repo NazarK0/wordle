@@ -3,7 +3,6 @@ const gulp = require('gulp');
 const del = require('del');
 const terser = require('gulp-terser-js');
 const cleanCSS = require('gulp-clean-css');
-// const rename = require("gulp-rename");
 const concatCss = require('gulp-concat-css');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
@@ -15,7 +14,6 @@ const src = {
   js: 'src/js/**/*.js',
   fonts: 'src/fonts/**/*',
   img: 'src/img/**/*',
-  // libs: 'src/libs/**/*',
   scss: 'src/styles/scss/**/*.scss',
   css: 'src/styles/css/**/*.css',
   html: 'src/**/*.html',
@@ -24,7 +22,6 @@ const dest = {
   js: 'dest/js',
   fonts: 'dest/fonts',
   img: 'dest/img',
-  // libs: 'dest/libs',
   scss: 'src/styles/css/compiled',
   css: 'dest',
   html: 'dest',
@@ -40,7 +37,6 @@ function watch() {
   gulp.watch(src.fonts, fonts);
   gulp.watch(src.img, img);
   gulp.watch(src.js, js);
-  // gulp.watch(src.libs, libs)
   gulp.watch(src.html, html);
 }
 
@@ -95,19 +91,9 @@ function js() {
         safari10: true,
       }),
     )
-    // .pipe(rename({
-    //   suffix: ".min"
-    // }))
     .pipe(gulp.dest(dest.js))
     .pipe(reload({ stream: true }));
 }
-
-// function libs() {
-//   return gulp
-//     .src(src.libs)
-//     .pipe(gulp.dest(dest.libs))
-//     .pipe(reload({ stream: true }))
-// }
 
 function clean() {
   return del([`dest`]);
@@ -115,7 +101,7 @@ function clean() {
 
 const build = gulp.series(
     gulp.parallel(clean, scss), 
-    gulp.parallel(css, js, /*libs,*/img, fonts, html ));
+    gulp.parallel(css, js, img, fonts, html ));
 
 gulp.task('serve', gulp.series(build, watch));
 gulp.task('build', build);

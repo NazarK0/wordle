@@ -1,4 +1,8 @@
 const convertResultToDom = (result) => {
+  if (result == null) {
+    return '-';
+  }
+  
   const { time, tries, wordSize, win} = result;
 
   return (
