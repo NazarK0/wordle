@@ -1,0 +1,1 @@
+import e from"./services/GameService.js";const r=new e("#playground","#keyboard");r.createQuizMatrix(),r.createKeyboard();

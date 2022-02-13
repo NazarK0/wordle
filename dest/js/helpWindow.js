@@ -1,0 +1,1 @@
+const e=document.getElementById("help-window"),n=document.getElementById("help-open"),t=document.getElementById("help-close");n&&(n.onclick=function(){e.style.display="block"}),t.onclick=function(){e.style.display="none"},e.onclick=function(n){n.target==e&&(e.style.display="none")};

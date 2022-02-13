@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Словечка</title>
+
+  <link rel="stylesheet" type="text/css" href="./fonts/icofont/icofont.min.css">
+  <link rel="stylesheet" href="./bundle.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script type="module" defer src="./js/game.js"></script>
+  <script defer src="./js/helpWindow.js"></script>
+  <script type="module" defer src="./js/settingsWindow.js"></script>
+  <script type="module" defer src="./js/modal.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="./img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./img/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./img/favicons/favicon-16x16.png">
+  <link rel="manifest" href="./img/favicons/site.webmanifest">
+  <link rel="mask-icon" href="./img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./img/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-config" content="./img/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=IBM+Plex+Mono:wght@200;400&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body class="main-body">
+  <header class="header">
+    <div class="left-block">
+      <button id="help-open" class="ctrl-btn" title="Довідка"><i class="icofont-question-square"></i></button>
+    </div>
+    <h1 class="page-title">СЛОВЕЧКА</h1>
+    <div class="right-block">
+      <button id="rating-open" class="ctrl-btn" title="Рейтинг"><i class="icofont-ui-rating"></i></button>
+      <button id="settings-open" class="ctrl-btn" title="Налаштування"><i class="icofont-ui-settings"></i></button>
+    </div>
+  </header>
+  <main id="playground" class="playground"></main>
+  <section id ="keyboard" class="keyboard"></section>
+  <!-- The Settings Window -->
+  <div id="settings-window" class="settings-window">
+    <div class="settings-body">
+      <header class="header">
+        <h2 class="title">Налаштування</h2>
+        <span id="settings-close" class="close">&times;</span>
+      </header>
+      <ul class="settings">
+        <li class="settings-item">
+          <h5 class="title">Кількість спроб</h5>
+          <div class="setter">
+            <input type="number" id="max-tries" min="1" max="8">
+          </div>
+        </li>
+        <li class="settings-item">
+          <h5 class="title">Довжина слова</h5>
+          <div class="setter">
+            <input type="number" id="word-size" min="3" max="9">
+          </div>
+        </li>
+        <li class="settings-item">
+          <h5 class="title">Темна Тема</h5>
+          <div class="setter">
+            <label class="switch">
+              <input type="checkbox" id="dark-theme">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </li>
+        <li class="settings-item">
+          <h5 class="title">Зворотній зв'язок</h5>
+          <div class="setter">
+            <a href="https://telegram.me/nazar_vs">Написати автору</a>
+          </div>
+        </li>
+        <li class="settings-item">
+          <h5 class="title">Github source code</h5>
+          <div class="setter">
+            <a href="https://github.com/NazarK0/wordle">Переглянути</a>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+  <!-- The Help Window -->
+  <div id="help-window" class="help-window">
+    <div class="help-body">
+      <span id="help-close" class="close">&times;</span>
+      <div id="help-content" class="help-content"></div>
+    </div>
+  </div>
+  <!-- The Modal -->
+  <div id="modal-window" class="modal-window">
+    <div class="modal-body">
+      <span id="modal-close" class="close">&times;</span>
+      <div id="modal-content" class="modal-content"></div>
+    </div>
+  </div>
+  <!-- The MessageBox -->
+  <div id="message-box" class="message-box">
+    <div class="message-content">
+      <p id="message" class="message-text"></p>
+    </div>
+  </div>
+  
+</body>
+</html>
