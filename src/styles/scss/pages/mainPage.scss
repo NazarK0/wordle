@@ -6,11 +6,12 @@
 @import '../fragments/settings';
 @import '../fragments/lightTheme';
 @import '../fragments/darkTheme';
+@import '../fragments/ratingWindow';
 
 .main-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: .3fr 3fr 1fr;
+  grid-template-rows: 70px 1fr 200px;
   grid-template-areas:
     'header header header'
     '. playground .'
@@ -38,6 +39,7 @@
 
   .playground {
     grid-area: playground;
+    padding: 60px 0;
     display: flex;
     flex-direction: column;
     align-items: center;

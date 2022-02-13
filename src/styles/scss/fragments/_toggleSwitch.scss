@@ -19,7 +19,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgb(177, 173, 173);
+  background-color: var(--toggle-not-active-bg);
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: .4s;
   box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -38,12 +38,12 @@
 }
 
 input:checked + .slider {
-  background-color: #43dd65;
+  background-color: var(--toggle-active-bg);
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #43dd65;
+  box-shadow: 0 0 1px var(--toggle-active-bg);
 }
 
 input:checked + .slider:before {

@@ -1,10 +1,10 @@
 .main-body.dark-theme {
-  --body-bg: rgb(41, 18, 9);
-  --body-bg-color: rgb(31, 32, 25);
-  --body-font-color: rgb(245, 245, 236);
-  --body-font-active-color: rgb(189, 184, 236);
-  --border: 1px solid rgb(236, 215, 215);
-  --cell-border: 4px solid rgb(83, 47, 47);
+  --body-bg: rgb(10, 10, 10);
+  --body-bg-color: rgb(29, 29, 29);
+  --body-font-color: rgb(100, 247, 125);
+  --body-font-active-color: rgb(52, 139, 34);
+  --border: 1px solid rgb(240, 230, 94);
+  --cell-border: 4px solid rgb(230, 163, 100);
   --cell-border-filled: 4px solid rgb(171, 175, 118);
   --cell-bg: rgb(231, 228, 228);
   --cell-bg-right-place: rgb(52, 196, 64);
@@ -16,8 +16,10 @@
   --cell-font-color: rgb(15, 15, 15);
   --message-bg: #ddb5b5;
   --message-text-color: rgb(36, 8, 8);
-  --keyboard-bg: rgb(245, 186, 186);
-  --keyboard--key-bg: rgb(226, 137, 137);
-  --keyboard-font-color: rgb(14, 4, 4);
+  --keyboard-bg: rgb(100, 247, 125);
+  --keyboard-key-bg: rgb(52, 139, 34);
+  --keyboard-font-color: rgb(255, 255, 255);
   --keyboard-key-shadow: 0px 0px 10px #14b524;
+  --toggle-not-active-bg: rgb(177, 173, 173);
+  --toggle-active-bg: rgb(67, 221, 101);
 }

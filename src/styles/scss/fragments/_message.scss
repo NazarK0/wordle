@@ -1,11 +1,12 @@
 .message-box {
   display: none;
-  justify-content: center;
+  justify-content: flex-start;
   position: fixed;
   z-index: 10000;
   left: 0;
-  top: 8px;
+  top: 98px;
   width: 100vw;
+  padding-left: 80px;
 
   .message-content {
     background-color: var(--message-bg);

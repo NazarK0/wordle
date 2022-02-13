@@ -49,7 +49,7 @@ class GameService {
       this._results = LocalStorageService.get(validKeys.results);
     }
 
-    if (!LocalStorageService.get(validKeys.darkTheme)) {
+    if (LocalStorageService.get(validKeys.darkTheme) == null) {
       LocalStorageService.set(validKeys.darkTheme, false);
     }
     

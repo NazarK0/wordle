@@ -60,7 +60,8 @@
   padding: 20px;
   border-radius: 13px;
   box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
-  width: 40%;
+  width: fit-content;
+  max-width: 90vw;
 }
 .modal-window .close {
   color: var(--body-font-color);
@@ -75,12 +76,13 @@
 
 .message-box {
   display: none;
-  justify-content: center;
+  justify-content: flex-start;
   position: fixed;
   z-index: 10000;
   left: 0;
-  top: 8px;
+  top: 98px;
   width: 100vw;
+  padding-left: 80px;
 }
 .message-box .message-content {
   background-color: var(--message-bg);
@@ -148,7 +150,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #b1adad;
+  background-color: var(--toggle-not-active-bg);
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: 0.4s;
   box-shadow: 0 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -167,12 +169,12 @@
 }
 
 input:checked + .slider {
-  background-color: #43dd65;
+  background-color: var(--toggle-active-bg);
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #43dd65;
+  box-shadow: 0 0 1px var(--toggle-active-bg);
 }
 
 input:checked + .slider:before {
@@ -221,6 +223,19 @@ input:checked + .slider:before {
   align-items: center;
   justify-content: space-between;
 }
+.settings-window .settings-body .settings-item input {
+  border: none;
+  height: 20px;
+  font-weight: bold;
+  padding-left: 7px;
+  background-color: var(--toggle-not-active-bg);
+}
+.settings-window .settings-body .settings-item input:hover, .settings-window .settings-body .settings-item input:active, .settings-window .settings-body .settings-item input:focus {
+  outline: none;
+}
+.settings-window .settings-body .settings-item input:active, .settings-window .settings-body .settings-item input:focus {
+  background-color: var(--toggle-active-bg);
+}
 
 :root,
 .main-body.light-theme {
@@ -242,18 +257,20 @@ input:checked + .slider:before {
   --message-bg: rgb(211, 238, 162);
   --message-text-color: rgb(44, 11, 11);
   --keyboard-bg: rgb(44, 11, 11);
-  --keyboard--key-bg: rgb(99, 64, 64);
+  --keyboard-key-bg: rgb(99, 64, 64);
   --keyboard-font-color: rgb(231, 231, 231);
   --keyboard-key-shadow: 0px 0px 3px rgb(231, 231, 231);
+  --toggle-not-active-bg: rgb(177, 173, 173);
+  --toggle-active-bg: rgb(67, 221, 101);
 }
 
 .main-body.dark-theme {
-  --body-bg: rgb(41, 18, 9);
-  --body-bg-color: rgb(31, 32, 25);
-  --body-font-color: rgb(245, 245, 236);
-  --body-font-active-color: rgb(189, 184, 236);
-  --border: 1px solid rgb(236, 215, 215);
-  --cell-border: 4px solid rgb(83, 47, 47);
+  --body-bg: rgb(10, 10, 10);
+  --body-bg-color: rgb(29, 29, 29);
+  --body-font-color: rgb(100, 247, 125);
+  --body-font-active-color: rgb(52, 139, 34);
+  --border: 1px solid rgb(240, 230, 94);
+  --cell-border: 4px solid rgb(230, 163, 100);
   --cell-border-filled: 4px solid rgb(171, 175, 118);
   --cell-bg: rgb(231, 228, 228);
   --cell-bg-right-place: rgb(52, 196, 64);
@@ -265,16 +282,71 @@ input:checked + .slider:before {
   --cell-font-color: rgb(15, 15, 15);
   --message-bg: #ddb5b5;
   --message-text-color: rgb(36, 8, 8);
-  --keyboard-bg: rgb(245, 186, 186);
-  --keyboard--key-bg: rgb(226, 137, 137);
-  --keyboard-font-color: rgb(14, 4, 4);
+  --keyboard-bg: rgb(100, 247, 125);
+  --keyboard-key-bg: rgb(52, 139, 34);
+  --keyboard-font-color: rgb(255, 255, 255);
   --keyboard-key-shadow: 0px 0px 10px #14b524;
+  --toggle-not-active-bg: rgb(177, 173, 173);
+  --toggle-active-bg: rgb(67, 221, 101);
+}
+
+.rating-window .total-statistics-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+.rating-window .total-statistics-list .statistic-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 13px;
+}
+.rating-window .total-statistics-list .statistic-item .title {
+  text-align: center;
+  margin: 10px 0;
+}
+.rating-window .by-day-statistics-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.rating-window .by-day-statistics-list .statistic-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+  margin: 20px 27px 70px 27px;
+}
+.rating-window .by-day-statistics-list .statistic-item > .title {
+  text-align: center;
+  margin: 10px 0;
+}
+.rating-window .by-day-statistics-list .statistic-item .value .result-data {
+  display: flex;
+  flex-direction: column;
+}
+.rating-window .by-day-statistics-list .statistic-item .value .result-data .result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.rating-window .by-day-statistics-list .statistic-item .value .result-data .result-item .title {
+  margin: 5px 0;
+  margin-right: 6px;
+}
+.rating-window .sub-title {
+  text-align: center;
+}
+.rating-window hr {
+  border: var(--border);
 }
 
 .main-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 0.3fr 3fr 1fr;
+  grid-template-rows: 70px 1fr 200px;
   grid-template-areas: "header header header" ". playground ." "keyboard keyboard keyboard";
   background: var(--body-bg);
   color: var(--body-font-color);
@@ -296,6 +368,7 @@ input:checked + .slider:before {
 }
 .main-body .playground {
   grid-area: playground;
+  padding: 60px 0;
   display: flex;
   flex-direction: column;
   align-items: center;

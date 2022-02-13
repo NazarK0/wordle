@@ -27,6 +27,11 @@ class LocalStorageService {
       }
     } else return null;
   }
+  static remove(key)  {
+    if (key && LocalStorageService.isKeyValid(key) && localStorage.getItem(key)) {
+      localStorage.removeItem(key);
+    }
+  }
 }
 
 

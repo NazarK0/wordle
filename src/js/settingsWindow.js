@@ -9,32 +9,38 @@ const wordSize = document.getElementById("word-size");
 
 const darkThemeToggler = document.getElementById("dark-theme");
 
-const setDarkTheme = (status) => {
-  if (status) {
+const setDarkTheme = () => {
+  if (document.body.classList.contains('light-theme')) {
     document.body.classList.remove('light-theme');
-    document.body.classList.add('dark-theme');
-  } else {
-    document.body.classList.remove('dark-theme');
-    document.body.classList.add('light-theme');
   }
+
+  document.body.classList.add('dark-theme');
+};
+const setLightTheme = () => {
+  if (document.body.classList.contains('dark-theme')) {
+    document.body.classList.remove('dark-theme');
+  }
+
+  document.body.classList.add('light-theme');
 };
 
 const fetchData = () => {
-  const isDarkTheme = LocalStorageService.get(validKeys.darkTheme);
-
   maxTries.value = LocalStorageService.get(validKeys.maxTries);
   wordSize.value = LocalStorageService.get(validKeys.wordSize);
-
-  darkThemeToggler.value = isDarkTheme;
-  setDarkTheme(isDarkTheme);
 };
 
-if (openSettingsBtn) {
-  openSettingsBtn.onclick = function() {
-    fetchData();
-    settingsWindow.style.display = "block";
-  };
-}
+window.onload = () => {
+  const isDarkTheme = LocalStorageService.get(validKeys.darkTheme);
+  fetchData();
+
+  darkThemeToggler.checked = isDarkTheme;
+  isDarkTheme ? setDarkTheme() : setLightTheme();
+};
+
+openSettingsBtn.onclick = function() {
+  fetchData();
+  settingsWindow.style.display = "block";
+};
 
 closeSettingsBtn.onclick = function() {
   settingsWindow.style.display = "none";
@@ -45,8 +51,6 @@ settingsWindow.onclick = function(event) {
     settingsWindow.style.display = "none";
   }
 };
-
-fetchData();
 
 maxTries.oninput = (event) => {
   const value = event.currentTarget.value;
@@ -67,6 +71,7 @@ wordSize.oninput = (event) => {
 darkThemeToggler.onchange = (event) => {
   const isDarkTheme = event.currentTarget.checked;
 
-  setDarkTheme(isDarkTheme);
+  isDarkTheme ? setDarkTheme() : setLightTheme();
+  LocalStorageService.set(validKeys.darkTheme, isDarkTheme);
 };
 

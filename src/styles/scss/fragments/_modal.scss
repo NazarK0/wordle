@@ -14,7 +14,8 @@
     padding: 20px;
     border-radius: 13px;
     box-shadow: 0 0 40px 7px rgba(0, 0, 0, 0.3);
-    width: 40%;
+    width: fit-content;
+    max-width: 90vw;
   }
 
   .close {

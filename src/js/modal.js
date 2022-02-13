@@ -1,12 +1,16 @@
+import ratingRender from './ratingRender.js';
+import LocalStorageService, {validKeys} from './services/LocalStorageService.js';
+
 const modal = document.getElementById("modal-window");
-const openBtn = document.getElementById("modal-open");
+const modalContent = document.getElementById("modal-content");
+const openRatingBtn = document.getElementById("rating-open");
 const closeBtn = document.getElementById("modal-close");
 
-if (openBtn) {
-  openBtn.onclick = function() {
+openRatingBtn.onclick = function() {
+    const results = LocalStorageService.get(validKeys.results);
+    modalContent.innerHTML = ratingRender(results);
     modal.style.display = "block";
   };
-}
 
 closeBtn.onclick = function() {
   modal.style.display = "none";
