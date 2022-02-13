@@ -151,6 +151,15 @@ class GameService {
   }
 
   _onCtrlKeyClickHandler = (event) =>{
+    const isGameNotAllowed = this._results
+      .filter((res) => new Date(res.time).toLocaleDateString() === new Date().toLocaleDateString())
+      .length  > 0;
+
+    if (isGameNotAllowed) {
+      this._message('Продовжуйте завтра');
+      return;
+    }
+
     switch (event.currentTarget.innerText) {
       case 'enter':
         this._onEnterKlickHandler();
@@ -164,6 +173,14 @@ class GameService {
   };
 
   _onLetterKeyClickHandler = (event) => {
+    const isGameNotAllowed = this._results
+      .filter((res) => new Date(res.time).toLocaleDateString() === new Date().toLocaleDateString())
+      .length  > 0;
+
+    if (isGameNotAllowed) {
+      this._message('Продовжуйте завтра');
+      return;
+    }
     const letter = event.currentTarget.innerText;
 
     if (this._gameOver) {
