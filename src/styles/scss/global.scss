@@ -1,9 +1,8 @@
-@import "./fragments/fonts";
 @import "../css/normalize";
 @import "./pages/mainPage";
 
 * {
-  font-size: 16px;
+  font-size: 25px;
   font-family: 'IBM Plex Mono', monospace; 
   box-sizing: border-box;
   
@@ -30,27 +29,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   margin: 20px 0;
 }
 
 h2 {
-  font-size: 2.1rem;
+  font-size: 1.7rem;
   margin: 15px 0;
 }
 
 h3 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   margin: 10px 0;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin: 8px 0;
 }
 
 h5 {
-  font-size: 1.1rem;
+  font-size: .8rem;
   margin: 5px 0;
 }
 

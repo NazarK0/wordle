@@ -118,15 +118,15 @@ const ratingRender = (results)=> {
         <h5 class="title">Проведено ігр</h5>
       </li>
       <li class="statistic-item">
-        <div class="value">${totalWins}</div>
+        <div class="value">${isFinite(totalWins) ? totalWins : 0 }</div>
         <h5 class="title">% перемог</h5>
       </li>
       <li class="statistic-item">
-        <div class="value">${bestResult}</div>
+        <div class="value">${isFinite(bestResult) ? bestResult : '-'}</div>
         <h5 class="title">Найкращий результат</h5>
       </li>
       <li class="statistic-item">
-        <div class="value">${worseResult}</div>
+        <div class="value">${isFinite(worseResult) ? worseResult: '-'}</div>
         <h5 class="title">Найгірший результат</h5>
       </li>
     </ul>

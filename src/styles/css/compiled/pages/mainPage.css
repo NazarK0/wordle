@@ -364,7 +364,7 @@ input:checked + .slider:before {
   margin-right: 10px;
 }
 .main-body .header .ctrl-btn * {
-  font-size: 1.9rem;
+  font-size: 1.4rem;
   color: var(--body-font-color);
 }
 .main-body .playground {
